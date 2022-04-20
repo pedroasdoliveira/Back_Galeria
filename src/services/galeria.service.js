@@ -1,4 +1,6 @@
 import { Galeria } from '../models/Galeria.js';
+// --------------------------------------------------- Imports -------------------------------
+
 
 export const findAllGalleriesService = async () => {
   const galeria = await Galeria.find();

@@ -1,4 +1,6 @@
 import mongoose from 'mongoose';
+// --------------------------------------------------- Imports -------------------------------
+
 
 export const connectToDatabase = () => {
   mongoose

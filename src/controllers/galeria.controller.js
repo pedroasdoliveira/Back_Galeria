@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import * as GalleriesService from '../services/galeria.service.js';
+// --------------------------------------------------- Imports -------------------------------
 
 export const findAllGalleriesController = async (req, res) => {
   try {

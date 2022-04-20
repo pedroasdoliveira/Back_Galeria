@@ -6,10 +6,12 @@ import {
   updateGalleryController,
   deleteGalleryController
 } from '../controllers/galeria.controller.js';
+// --------------------------------------------------- Imports -------------------------------
+
 
 export const route = express.Router();
 
-route.get('/catalogo-imagens', findAllGalleriesController);
+route.get('/catalogo_imagens', findAllGalleriesController);
 
 route.get('/imagem/:id', findByIdGalleriesController);
 

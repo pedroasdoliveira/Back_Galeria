@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+// --------------------------------------------------- Imports -------------------------------
 
 const GaleriaSchema = new mongoose.Schema({
   titulo: {
@@ -20,7 +21,7 @@ const GaleriaSchema = new mongoose.Schema({
   ano: {
     type: Number,
     require: true,
-  },
+  }
 });
 
 export const Galeria = mongoose.model('galeria', GaleriaSchema);
