@@ -11,12 +11,12 @@ import {
 
 export const route = express.Router();
 
-route.get('/catalogo_imagens', findAllGalleriesController);
+route.get('/catalog_images', findAllGalleriesController);
 
-route.get('/imagem/:id', findByIdGalleriesController);
+route.get('/images/:id', findByIdGalleriesController);
 
-route.post('/adicionar', createGalleryController);
+route.post('/add', createGalleryController);
 
-route.put('/editar/:id', updateGalleryController);
+route.put('/edit/:id', updateGalleryController);
 
-route.delete('/apagar/:id', deleteGalleryController);
+route.delete('/delete/:id', deleteGalleryController);

@@ -1,27 +1,27 @@
-import { Galeria } from '../models/Galeria.js';
+import { Gallery } from '../models/Galeria.js';
 // --------------------------------------------------- Imports -------------------------------
 
 
 export const findAllGalleriesService = async () => {
-  const galeria = await Galeria.find();
-  return galeria;
+  const gallery = await Gallery.find();
+  return gallery;
 };
 
 export const findByIdGalleriesService = async (idParam) => {
-  const galeria = await Galeria.findById(idParam);
-  return galeria;
+  const gallery = await Gallery.findById(idParam);
+  return gallery;
 };
 
 export const createGalleryService = async (novaGaleria) => {
-  const addGaleria = await Galeria.create(novaGaleria);
-  return addGaleria;
+  const addGallery = await Gallery.create(novaGaleria);
+  return addGallery;
 };
 
 export const updateGalleryService = async (id, editarGaleria) => {
-  const atualizarGaleria = await Galeria.findByIdAndUpdate(id, editarGaleria);
-  return atualizarGaleria;
+  const updateGallery = await Gallery.findByIdAndUpdate(id, editarGaleria);
+  return updateGallery;
 };
 
 export const deleteGalleryService = async (id) => {
-  return await Galeria.findByIdAndDelete(id);
+  return await Gallery.findByIdAndDelete(id);
 };

@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 // --------------------------------------------------- Imports -------------------------------
 
-const GaleriaSchema = new mongoose.Schema({
+const GallerySchema = new mongoose.Schema({
   titulo: {
     type: String,
     require: true,
@@ -24,4 +24,4 @@ const GaleriaSchema = new mongoose.Schema({
   }
 });
 
-export const Galeria = mongoose.model('galeria', GaleriaSchema);
+export const Gallery = mongoose.model('galerias', GallerySchema);

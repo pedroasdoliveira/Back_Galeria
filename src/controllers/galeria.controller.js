@@ -4,13 +4,13 @@ import * as GalleriesService from '../services/galeria.service.js';
 
 export const findAllGalleriesController = async (req, res) => {
   try {
-    const galeria = await GalleriesService.findAllGalleriesService();
+    const gallery = await GalleriesService.findAllGalleriesService();
 
-    if (galeria.length == undefined || galeria.length == null) {
+    if (gallery.length == undefined || gallery.length == null) {
       return res.status(404).send({ message: 'Essa galeria não existe!' });
     }
 
-    res.status(200).send(galeria);
+    res.status(200).send(gallery);
   } catch (err) {
     res.status(500).send({ message: err.message });
   }
@@ -18,22 +18,22 @@ export const findAllGalleriesController = async (req, res) => {
 
 export const findByIdGalleriesController = async (req, res) => {
   try {
-    const idParametro = req.params.id;
+    const idParam = req.params.id;
 
-    if (!mongoose.Types.ObjectId.isValid(idParametro)) {
+    if (!mongoose.Types.ObjectId.isValid(idParam)) {
       return res.status(400).send({ message: 'Id invalido' });
     }
 
-    const escolherGaleria = await GalleriesService.findByIdGalleriesService(
-      idParametro,
+    const chosenGallery = await GalleriesService.findByIdGalleriesService(
+      idParam,
     );
 
-    if (escolherGaleria == undefined) {
+    if (chosenGallery == undefined) {
       res.status(404).send({ message: 'Galeria não encontrada.' });
       return;
     }
 
-    res.status(202).send(escolherGaleria);
+    res.status(202).send(chosenGallery);
   } catch (err) {
     res.status(500).send({ message: err.message });
   }
@@ -41,15 +41,15 @@ export const findByIdGalleriesController = async (req, res) => {
 
 export const createGalleryController = async (req, res) => {
   try {
-    const galeria = req.body;
+    const gallery = req.body;
 
     if (
-      !galeria ||
-      !galeria.titulo ||
-      !galeria.image ||
-      !galeria.tema ||
-      !galeria.descricao ||
-      !galeria.ano
+      !gallery ||
+      !gallery.titulo ||
+      !gallery.image ||
+      !gallery.tema ||
+      !gallery.descricao ||
+      !gallery.ano
     ) {
       return res.status(400).send({
         message:
@@ -57,9 +57,9 @@ export const createGalleryController = async (req, res) => {
       });
     }
 
-    const novaGaleria = await GalleriesService.createGalleryService(galeria);
+    const newGallery = await GalleriesService.createGalleryService(gallery);
 
-    res.status(201).send(novaGaleria);
+    res.status(201).send(newGallery);
   } catch (err) {
     res.status(500).send({ message: err.message });
   }
@@ -67,33 +67,33 @@ export const createGalleryController = async (req, res) => {
 
 export const updateGalleryController = async (req, res) => {
   try {
-    const idParametro = req.params.id;
+    const idParam = req.params.id;
 
-    if (!mongoose.Types.ObjectId.isValid(idParametro)) {
+    if (!mongoose.Types.ObjectId.isValid(idParam)) {
       return res.status(400).send({ message: 'Id não localizado!' });
     }
 
-    const editarGaleria = req.body;
+    const editGallery = req.body;
 
     if (
-      !editarGaleria ||
-      !editarGaleria.titulo ||
-      !editarGaleria.image ||
-      !editarGaleria.tema ||
-      !editarGaleria.descricao ||
-      !editarGaleria.ano
+      !editGallery ||
+      !editGallery.titulo ||
+      !editGallery.image ||
+      !editGallery.tema ||
+      !editGallery.descricao ||
+      !editGallery.ano
     ) {
       return res.status(400).send({
         message: 'Erro na verificação! Envie todos os campor requisitados!',
       });
     }
 
-    const atualizarGaleria = await GalleriesService.updateGalleryService(
-      idParametro,
-      editarGaleria,
+    const updateGallery = await GalleriesService.updateGalleryService(
+      idParam,
+      editGallery,
     );
 
-    res.status(200).send(atualizarGaleria);
+    res.status(200).send(updateGallery);
   } catch (err) {
     res.status(500).send({ message: err.message });
   }
@@ -101,13 +101,13 @@ export const updateGalleryController = async (req, res) => {
 
 export const deleteGalleryController = async (req, res) => {
   try {
-    const idParametro = req.params.id;
+    const idParam = req.params.id;
 
-    if (!mongoose.Types.ObjectId.isValid(idParametro)) {
+    if (!mongoose.Types.ObjectId.isValid(idParam)) {
       return res.status(400).send({ message: 'Id inválido' });
     }
 
-    await GalleriesService.deleteGalleryService(idParametro);
+    await GalleriesService.deleteGalleryService(idParam);
 
     res.status(200).send({ message: 'Galeria excluida com sucesso!' });
   } catch (err) {

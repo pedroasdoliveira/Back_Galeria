@@ -10,7 +10,7 @@ connectToDatabase();
 
 app.use(express.json());
 app.use(cors());
-app.use('/galerias', route);
+app.use('/galleries', route);
 
 // ------------------------------------------- Porta ---------------------------------
 const port = 3005;
