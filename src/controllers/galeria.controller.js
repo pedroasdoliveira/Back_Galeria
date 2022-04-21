@@ -19,10 +19,7 @@ export const findAllGalleriesController = async (req, res) => {
 export const findByIdGalleriesController = async (req, res) => {
   try {
     const idParam = req.params.id;
-
-    if (!mongoose.Types.ObjectId.isValid(idParam)) {
-      return res.status(400).send({ message: 'Id invalido' });
-    }
+    console.log(idParam)
 
     const chosenGallery = await GalleriesService.findByIdGalleriesService(
       idParam,
@@ -69,10 +66,6 @@ export const updateGalleryController = async (req, res) => {
   try {
     const idParam = req.params.id;
 
-    if (!mongoose.Types.ObjectId.isValid(idParam)) {
-      return res.status(400).send({ message: 'Id não localizado!' });
-    }
-
     const editGallery = req.body;
 
     if (
@@ -102,10 +95,6 @@ export const updateGalleryController = async (req, res) => {
 export const deleteGalleryController = async (req, res) => {
   try {
     const idParam = req.params.id;
-
-    if (!mongoose.Types.ObjectId.isValid(idParam)) {
-      return res.status(400).send({ message: 'Id inválido' });
-    }
 
     await GalleriesService.deleteGalleryService(idParam);
 

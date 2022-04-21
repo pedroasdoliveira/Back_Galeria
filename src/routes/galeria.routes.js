@@ -6,6 +6,7 @@ import {
   updateGalleryController,
   deleteGalleryController
 } from '../controllers/galeria.controller.js';
+import { validId } from '../middlewares/galeria.middleware.js'
 // --------------------------------------------------- Imports -------------------------------
 
 
@@ -13,7 +14,7 @@ export const route = express.Router();
 
 route.get('/catalog_images', findAllGalleriesController);
 
-route.get('/images/:id', findByIdGalleriesController);
+route.get('/images/:id', validId, findByIdGalleriesController);
 
 route.post('/add', createGalleryController);
 
