@@ -1,14 +1,14 @@
 [
   {
     "titulo": "cataratas do iguaçu",
-    "imagem": "./assets/image/",
+    "imagem": "./assets/image/cataratas-do-iguacu.jpg",
     "tema": "Paisagem",
     "descricao": "Paisagem das cataratas de Foz do Iguaçu",
     "ano": "2018"
   },
   {
     "titulo": "Lobo",
-    "imagem": "./assets/image/",
+    "imagem": "./assets/image/lobo1.jpg",
     "tema": "Vida Selvagem",
     "descricao": "Lobo",
     "ano": "2019"

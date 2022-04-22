@@ -19,7 +19,6 @@ export const findAllGalleriesController = async (req, res) => {
 export const findByIdGalleriesController = async (req, res) => {
   try {
     const idParam = req.params.id;
-    console.log(idParam)
 
     const chosenGallery = await GalleriesService.findByIdGalleriesService(
       idParam,
@@ -40,20 +39,6 @@ export const createGalleryController = async (req, res) => {
   try {
     const gallery = req.body;
 
-    if (
-      !gallery ||
-      !gallery.titulo ||
-      !gallery.image ||
-      !gallery.tema ||
-      !gallery.descricao ||
-      !gallery.ano
-    ) {
-      return res.status(400).send({
-        message:
-          'Informações incompletas! Enviar todos os requisitos obrigatorios!',
-      });
-    }
-
     const newGallery = await GalleriesService.createGalleryService(gallery);
 
     res.status(201).send(newGallery);
@@ -67,19 +52,6 @@ export const updateGalleryController = async (req, res) => {
     const idParam = req.params.id;
 
     const editGallery = req.body;
-
-    if (
-      !editGallery ||
-      !editGallery.titulo ||
-      !editGallery.image ||
-      !editGallery.tema ||
-      !editGallery.descricao ||
-      !editGallery.ano
-    ) {
-      return res.status(400).send({
-        message: 'Erro na verificação! Envie todos os campor requisitados!',
-      });
-    }
 
     const updateGallery = await GalleriesService.updateGalleryService(
       idParam,
