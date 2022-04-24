@@ -22,4 +22,4 @@ route.post('/add', validIdObjectBody, createGalleryController);
 
 route.put('/edit/:id', validId, validIdObjectBody, updateGalleryController);
 
-route.delete('/delete/:id', validId, deleteGalleryController);
+route.delete('/delete/:id', validId, deleteGalleryController); 

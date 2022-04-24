@@ -4,7 +4,7 @@ import mongoose from 'mongoose';
 
 export const connectToDatabase = () => {
   mongoose
-    .connect('mongodb://localhost:27017/galeria-db', {
+    .connect('mongodb://localhost:27017/galerias-db', {
       // encontrar na documentação
       useNewUrlParser: true,
       useUnifiedTopology: true,

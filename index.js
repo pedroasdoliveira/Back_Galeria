@@ -4,7 +4,6 @@ import { route } from './src/routes/galeria.routes.js';
 import { connectToDatabase } from "./src/database/database.js";
 // --------------------------------------------------- Imports -------------------------------
 
-
 const app = express();
 connectToDatabase();
 

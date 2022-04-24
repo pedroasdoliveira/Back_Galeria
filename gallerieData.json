@@ -1,7 +1,7 @@
 [
   {
     "titulo": "cataratas do iguaçu",
-    "imagem": "./assets/image/cataratas-do-iguacu.jpg",
+    "imagem": "./assets/image/cataratas_do_iguacu.jpg",
     "tema": "Paisagem",
     "descricao": "Paisagem das cataratas de Foz do Iguaçu",
     "ano": "2018"
