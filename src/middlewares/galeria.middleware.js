@@ -27,3 +27,15 @@ export const validIdObjectBody = (req, res, next) => {
 
   next();
 };
+
+export const validObjectBodyPurchases = (req, res, next) => {
+  const purchases = req.body;
+
+  purchases.forEach((item) => {
+    if (!item || !item.galeriaId || !item.quantidade) {
+      return res.status(400).send({ message: 'Envie todos os campos!' });
+    }
+  });
+
+  next();
+};
