@@ -1,8 +1,8 @@
-import dotenv from 'dotenv';
-import express from "express";
-import cors from "cors";
-import { route } from './src/routes/galeria.routes.js';
-import { connectToDatabase } from "./src/database/database.js";
+const dotenv = require('dotenv');
+const express = require('express');
+const cors = require('cors');
+const route = require('./src/routes/galeria.routes.js');
+const connectToDatabase = require('./src/database/database.js')
 // --------------------------------------------------- Imports -------------------------------
 
 dotenv.config();

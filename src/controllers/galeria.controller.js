@@ -1,8 +1,8 @@
-import mongoose from 'mongoose';
-import * as GalleriesService from '../services/galeria.service.js';
+const mongoose = require('mongoose');
+const GalleriesService = require('../services/galeria.service.js');
 // --------------------------------------------------- Imports -------------------------------
 
-export const findAllGalleriesController = async (req, res) => {
+const findAllGalleriesController = async (req, res) => {
   try {
     const gallery = await GalleriesService.findAllGalleriesService();
 
@@ -16,7 +16,7 @@ export const findAllGalleriesController = async (req, res) => {
   }
 };
 
-export const findByIdGalleriesController = async (req, res) => {
+const findByIdGalleriesController = async (req, res) => {
   try {
     const idParam = req.params.id;
 
@@ -35,7 +35,7 @@ export const findByIdGalleriesController = async (req, res) => {
   }
 };
 
-export const createGalleryController = async (req, res) => {
+const createGalleryController = async (req, res) => {
   try {
     const gallery = req.body;
 
@@ -47,7 +47,7 @@ export const createGalleryController = async (req, res) => {
   }
 };
 
-export const updateGalleryController = async (req, res) => {
+const updateGalleryController = async (req, res) => {
   try {
     const idParam = req.params.id;
 
@@ -64,7 +64,7 @@ export const updateGalleryController = async (req, res) => {
   }
 };
 
-export const deleteGalleryController = async (req, res) => {
+const deleteGalleryController = async (req, res) => {
   try {
     const idParam = req.params.id;
 
@@ -76,3 +76,10 @@ export const deleteGalleryController = async (req, res) => {
   }
 };
 
+module.exports = {
+  findAllGalleriesController,
+  findByIdGalleriesController,
+  createGalleryController,
+  updateGalleryController,
+  deleteGalleryController
+}

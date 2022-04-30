@@ -1,15 +1,21 @@
-import { Purchases } from '../models/Purchases.js';
+const Purchases = require('../models/Purchases.js');
 
-export const findPurchasesService = async () => {
+const findPurchasesService = async () => {
   const allPurchases = await Purchases.find();
   return allPurchases;
 };
 
-export const createPurchasesService = async (newPurchases) => {
+const createPurchasesService = async (newPurchases) => {
   const createdPurchases = await Purchases.insertMany(newPurchases);
   return createdPurchases;
 };
 
-export const finishPurchasesService = async () => {
+const finishPurchasesService = async () => {
   return await Purchases.deleteMany();
 };
+
+module.exports = {
+  findPurchasesService,
+  createPurchasesService,
+  finishPurchasesService
+}

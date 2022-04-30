@@ -1,8 +1,8 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 // --------------------------------------------------- Imports -------------------------------
 
 
-export const connectToDatabase = () => {
+const connectToDatabase = () => {
   mongoose
     .connect(process.env.URI_DATABASE, {
       // encontrar na documentação
@@ -16,3 +16,5 @@ export const connectToDatabase = () => {
       console.log(`Erro ao conectar ao servidor. Erro: ${err}.`);
     });
 };
+
+module.exports = connectToDatabase

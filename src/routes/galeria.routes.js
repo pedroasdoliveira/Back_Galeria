@@ -1,34 +1,33 @@
-import express from 'express';
-import {
-  findAllGalleriesController,
-  findByIdGalleriesController,
-  createGalleryController,
-  updateGalleryController,
-  deleteGalleryController,
-} from '../controllers/galeria.controller.js';
-import {
+const swaggerUi = require('swagger-ui-express')
+const swaggerDocument = require('../../swagger.json');
+const galeryController = require('../controllers/galeria.controller.js');
+const {
   validId,
   validIdObjectBody,
   validObjectBodyPurchases,
-} from '../middlewares/galeria.middleware.js';
-import {
+} = require('../middlewares/galeria.middleware.js');
+const {
   findPurchasesController,
   createPurchasesController,
   finishPurchasesController,
-} from '../controllers/purchases.controller.js';
+} = require('../controllers/purchases.controller.js');
 // --------------------------------------------------- Imports -------------------------------
 
-export const route = express.Router();
+const route = require("express").Router();
 
-route.get('/catalog_images', findAllGalleriesController);
+route.use('/api-docs', swaggerUi.serve);
 
-route.get('/images/:id', validId, findByIdGalleriesController);
+route.get('/api-docs', swaggerUi.setup(swaggerDocument));
 
-route.post('/add', validIdObjectBody, createGalleryController);
+route.get('/catalog_images', galeryController.findAllGalleriesController);
 
-route.put('/edit/:id', validId, validIdObjectBody, updateGalleryController);
+route.get('/images/:id', validId, galeryController.findByIdGalleriesController);
 
-route.delete('/delete/:id', validId, deleteGalleryController);
+route.post('/add', validIdObjectBody, galeryController.createGalleryController);
+
+route.put('/edit/:id', validId, validIdObjectBody, galeryController.updateGalleryController);
+
+route.delete('/delete/:id', validId, galeryController.deleteGalleryController);
 
 route.get('/all-purchases', findPurchasesController);
 
@@ -39,3 +38,5 @@ route.post(
 );
 
 route.delete('/finish-purchases', finishPurchasesController);
+
+module.exports = route;

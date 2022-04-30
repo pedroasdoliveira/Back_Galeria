@@ -1,6 +1,6 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
-export const validId = (req, res, next) => {
+const validId = (req, res, next) => {
   const idParam = req.params.id;
 
   // erro idParam == undefined
@@ -11,7 +11,7 @@ export const validId = (req, res, next) => {
   next();
 };
 
-export const validIdObjectBody = (req, res, next) => {
+const validIdObjectBody = (req, res, next) => {
   const gallery = req.body;
 
   if (
@@ -28,7 +28,7 @@ export const validIdObjectBody = (req, res, next) => {
   next();
 };
 
-export const validObjectBodyPurchases = (req, res, next) => {
+const validObjectBodyPurchases = (req, res, next) => {
   const purchases = req.body;
 
   purchases.forEach((item) => {
@@ -39,3 +39,9 @@ export const validObjectBodyPurchases = (req, res, next) => {
 
   next();
 };
+
+module.exports = {
+  validId,
+  validIdObjectBody,
+  validObjectBodyPurchases
+}
