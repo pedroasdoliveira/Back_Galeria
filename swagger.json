@@ -13,6 +13,10 @@
     {
       "url": "http://localhost:3005/galleries",
       "description": "API de teste"
+    },
+    {
+      "url": "https://apigaleriaimages-blue.onrender.com/galleries",
+      "description": "API de produção no Render"
     }
   ],
   "paths": {
