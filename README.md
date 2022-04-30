@@ -12,3 +12,7 @@
 <h2>Conectando o servidor</h2>
 
 <p>Projeto rodando na porta 3005 através do comando "npm run dev"</p>
+
+<h2>Servidores</h2>
+
+<p>Render: https://apigaleriaimages-blue.onrender.com/galleries</p>
