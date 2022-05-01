@@ -32,7 +32,7 @@
           "200": {
             "description": "Ok",
             "content": {
-              "applocation/json": {
+              "application/json": {
                 "schema": {
                   "type": "array",
                   "items": {
