@@ -29,6 +29,7 @@ route.put('/edit/:id', validId, validIdObjectBody, galeryController.updateGaller
 
 route.delete('/delete/:id', validId, galeryController.deleteGalleryController);
 
+// ---------------------------------------- Compras ----------------------------------
 route.get('/all-purchases', findPurchasesController);
 
 route.post(
