@@ -1,4 +1,6 @@
 import express from 'express';
+import swaggerUi from 'swagger-ui-express';
+import fs from 'fs'
 import {
   findAllGalleriesController,
   findByIdGalleriesController,
@@ -17,8 +19,13 @@ import {
   finishPurchasesController,
 } from '../controllers/purchases.controller.js';
 // --------------------------------------------------- Imports -------------------------------
+const swaggerDocument = JSON.parse(fs.readFileSync("../../swagger.json", "utf8"))
 
 export const route = express.Router();
+
+route.use('/api-docs', swaggerUi.serve);
+
+route.get('/api-docs', swaggerUi.setup(swaggerDocument));
 
 route.get('/catalog_images', findAllGalleriesController);
 

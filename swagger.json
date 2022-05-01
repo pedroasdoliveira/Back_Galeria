@@ -1,0 +1,320 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Galeria Backend",
+    "description": "API para CRUD de galerias de cards de fotos",
+    "termsOfService": "",
+    "contact": {
+      "email": "pedroaolive@gmail.com"
+    },
+    "version": "1.0.0"
+  },
+  "server": [
+    {
+      "url": "http://localhost:3005/galleries",
+      "description": "API de teste"
+    },
+    {
+      "url": "https://apigaleriaimages-blue.onrender.com/galleries",
+      "description": "API de produção no Render"
+    }
+  ],
+  "paths": {
+    "/catalog_images": {
+      "get": {
+        "summary": "Galeria de imagens",
+        "description": "Rota responsavel por listar todos os Cards de imagens",
+        "tags": ["Galerias"],
+        "responses": {
+          "404": {
+            "description": "Not Found"
+          },
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Galerias"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/images/{id}": {
+      "get": {
+        "summary": "Buscar Card de imagem",
+        "description": "Rota responsavel por buscar o Id do Card procurado",
+        "tags": ["Galerias"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id do Card de busca",
+            "required": true
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Galerias"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/add": {
+      "post": {
+        "summary": "Cadastrar Card",
+        "description": "Rota responsavel por cadastrar os Card de imagens",
+        "tags": ["Galerias"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Galerias"
+              },
+              "examples": {
+                "Galerias": {
+                  "value": {
+                    "titulo": "Paisagem de inverno",
+                    "imagem": "./assets/image/paisagem_gelada.jpg",
+                    "tema": "Paisagem",
+                    "descricao": "Foto de uma paisagem deslumbrante congelada pelo inverno",
+                    "ano": 2020
+                  }
+                }
+              }
+            }
+          }
+        },
+        "response": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Galerias"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/edit/{id}": {
+      "put": {
+        "summary": "Editar Card pelo Id",
+        "description": "Rota responsavel por editar as informações do Card",
+        "tags": ["Galerias"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id do Card para busca",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Galerias"
+              },
+              "examples": {
+                "Galerias": {
+                  "value": {
+                    "titulo": "Paisagem de inverno",
+                    "imagem": "./assets/image/paisagem_gelada.jpg",
+                    "tema": "Paisagem",
+                    "descricao": "Foto de uma paisagem deslumbrante congelada pelo inverno",
+                    "ano": 2020
+                  }
+                }
+              }
+            }
+          }
+        },
+        "response": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "201": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schema/Galerias"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/delete/{id}": {
+      "delete": {
+        "summary": "Apagar Card pelo Id",
+        "description": "Rota responsavel por apagar o Card pelo Id",
+        "tags": ["Galerias"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id do Card para deleção",
+            "required": true
+          }
+        ],
+        "response": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Ok"
+          }
+        }
+      }
+    },
+    "/all-purchases": {
+      "get": {
+        "summary": "Lista de todas as galerias",
+        "description": "Rota responsavel por listar todos os Cards na galeria",
+        "tags": ["Escolhidas"],
+        "responses": {
+          "404": {
+            "description": "Not Found"
+          },
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Escolhidas"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/create-purchases": {
+      "post": {
+        "summary": "Cadastrar varios items na galeria",
+        "description": "Rota responsavel por cadastrar vários itens na galeria",
+        "tags": ["Escolhidas"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Escolhidas"
+              },
+              "examples": {
+                "Escolhidas": {
+                  "value": [
+                    {
+                      "galeriaId": "62681287d0c9849a70acb790",
+                      "quantidade": 3
+                    },
+                    {
+                      "galeriaId": "626812c2d0c9849a70acb792",
+                      "quantidade": 5
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Escolhidas"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/finish-purchases": {
+      "delete": {
+        "summary": "Apagar todos os items da galeria",
+        "description": "Rota responsavel por apagar todos os items da galeria",
+        "tags": ["Escolhidas"],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Ok"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Galerias": {
+        "type": "object",
+        "properties": {
+          "titulo": {
+            "type": "string"
+          },
+          "imagem": {
+            "type": "string"
+          },
+          "tema": {
+            "type": "string"
+          },
+          "descricao": {
+            "type": "string"
+          },
+          "ano": {
+            "type": "number"
+          }
+        }
+      },
+      "Compras": {
+        "type": "object",
+        "properties": {
+          "galeriaId": {
+            "type": "string"
+          },
+          "quantidade": {
+            "type": "number"
+          }
+        }
+      }
+    }
+  }
+}
