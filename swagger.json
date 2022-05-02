@@ -20,14 +20,14 @@
     }
   ],
   "paths": {
-    "/catalog_images": {
+    "/galleries/catalog_images": {
       "get": {
         "summary": "Galeria de imagens",
         "description": "Rota responsavel por listar todos os Cards de imagens",
         "tags": ["Galerias"],
         "responses": {
-          "404": {
-            "description": "Not Found"
+          "400": {
+            "description": "Bad Request"
           },
           "200": {
             "description": "Ok",
@@ -45,7 +45,7 @@
         }
       }
     },
-    "/images/{id}": {
+    "/galleries/images/{id}": {
       "get": {
         "summary": "Buscar Card de imagem",
         "description": "Rota responsavel por buscar o Id do Card procurado",
@@ -76,7 +76,7 @@
         }
       }
     },
-    "/add": {
+    "/galleries/add": {
       "post": {
         "summary": "Cadastrar Card",
         "description": "Rota responsavel por cadastrar os Card de imagens",
@@ -119,7 +119,7 @@
         }
       }
     },
-    "/edit/{id}": {
+    "/galleries/edit/{id}": {
       "put": {
         "summary": "Editar Card pelo Id",
         "description": "Rota responsavel por editar as informações do Card",
@@ -170,7 +170,7 @@
         }
       }
     },
-    "/delete/{id}": {
+    "/galleries/delete/{id}": {
       "delete": {
         "summary": "Apagar Card pelo Id",
         "description": "Rota responsavel por apagar o Card pelo Id",
@@ -193,7 +193,7 @@
         }
       }
     }, 
-    "/all-purchases": {
+    "/galleries/all-purchases": {
       "get": {
         "summary": "Lista de todas as galerias",
         "description": "Rota responsavel por listar todos os Cards na galeria",
@@ -209,7 +209,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Escolhidas"
+                    "$ref": "#/components/schemas/Compras"
                   }
                 }
               }
@@ -218,7 +218,7 @@
         }
       }
     },
-    "/create-purchases": {
+    "/galleries/create-purchases": {
       "post": {
         "summary": "Cadastrar varios items na galeria",
         "description": "Rota responsavel por cadastrar vários itens na galeria",
@@ -227,7 +227,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Escolhidas"
+                "$ref": "#/components/schemas/Compras"
               },
               "examples": {
                 "Escolhidas": {
@@ -266,7 +266,7 @@
         }
       }
     },
-    "/finish-purchases": {
+    "/galleries/finish-purchases": {
       "delete": {
         "summary": "Apagar todos os items da galeria",
         "description": "Rota responsavel por apagar todos os items da galeria",
