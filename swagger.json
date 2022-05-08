@@ -257,7 +257,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Escolhidas"
+                    "$ref": "#/components/schemas/Compras"
                   }
                 }
               }
